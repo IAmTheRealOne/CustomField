@@ -17,25 +17,25 @@ local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
 
 local successCloseKey, failedCloseKey = pcall(function()
-
+	
 	if not Enum.KeyCode[_G.CloseKey] then
-
+		
 		_G.CloseKey = "RightAlt"
-
+		
 	end
-
+	
 end)
 
 if failedCloseKey then
-
+	
 	_G.CloseKey = "RightAlt"
-
+	
 end
 
 if not _G.CloseKey then
-
+	
 	_G.CloseKey = "RightAlt"
-
+	
 end
 
 
