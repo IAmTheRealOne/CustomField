@@ -16,6 +16,11 @@ local RayfieldFolder = "Rayfield"
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
 
+if not _G.CloseKey then
+	
+	_G.CloseKey = Enum.KeyCode.RightAlt
+	
+end
 
 
 local RayfieldLibrary = {
@@ -1919,7 +1924,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			UserInputService.InputBegan:Connect(function(input, processed)
 
 				if CheckingForKey then
-					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode.RightAlt then
+					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= _G.CloseKey then
 						local SplitMessage = string.split(tostring(input.KeyCode), ".")
 						local NewKeyNoEnum = SplitMessage[3]
 						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
@@ -2565,7 +2570,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-	if (input.KeyCode == Enum.KeyCode.RightAlt and not processed) then
+	if (input.KeyCode == _G.CloseKey and not processed) then
 		if Debounce then return end
 		if Hidden then
 			Hidden = false
